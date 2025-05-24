@@ -4,7 +4,7 @@ import contextlib
 import os
 import sys
 import time
-from .core.helper import time_formatter#, bash
+from .core.helper import time_formatter
 from Tepthon.load_plug import load
 from telethon.errors import SessionRevokedError
 from .utils import (
@@ -12,16 +12,13 @@ from .utils import (
     main_process,
 )
 
-
 jmubot.me.phone = None
 
 if not jmubot.me.bot:
     jmdB.set_key("OWNER_ID", jmubot.me.id)
     jmdB.set_key("NAME", jmubot.full_name)
 
-
 LOGS.info("جاري تثبيت تيبثون...")
-
 
 try:
     LOGS.info("- يتم إعـداد الإعدادات .......")
@@ -36,8 +33,7 @@ jmubot.loop.create_task(join_dev())
 async def load_plugins():
     load(["plugins/basic", "plugins/assistant", "plugins/account", "plugins/fun", "plugins/group"])
 
-jmubot.run_in_loop(load_plugins())
-
+jmubot.run_in_loop(load_plugins)
 
 LOGS.info(f"⏳ تم استغراق {time_formatter((time.time() - start_time) * 1000)} ميللي ثانية لبدء تشغيل سورس تيبثون.")
 
@@ -50,11 +46,9 @@ LOGS.info(
     """
 )
 
-    
 try:
     asst.run()
     LOGS.info(f"تم بنجاح تشغيل البوت المساعد من @Tepthon")
 except SessionRevokedError:
     LOGS.info(f"جلسة البوت المساعد [@{asst.me.username}] فشلت لكن سيتم تشغيل سورس الحساب فقط")
     jmubot.run()
-
