@@ -34,7 +34,7 @@ except Exception as meo:
 jmubot.loop.create_task(join_dev())
 
 async def load_plugins():
-    load(path=["plugins/basic", "plugins/assistant", "plugins/account", "plugins/fun", "plugins/group"])
+    load(["plugins/basic", "plugins/assistant", "plugins/account", "plugins/fun", "plugins/group"])
 
 jmubot.run_in_loop(load_plugins())
 
