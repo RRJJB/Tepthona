@@ -2,10 +2,11 @@ telethon
 pyrogram==2.0.106
 tgcrypto
 pytz
+flask_restful
 flask
 gunicorn
 aiohttp
-decouple
+python-decouple
 requests
 tabulate
 ipaddress 
