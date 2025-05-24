@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: tephtona-bot
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m Tepthon"
+    envVars:
+      - key: API_ID
+        value: "123456"  # استبدله بـ API ID الحقيقي
+      - key: API_HASH
+        value: "abcd1234efgh5678ijkl9012mnop3456"
+      - key: STRING_SESSION
+        value: "1A...xyz"  # الجلسة المشفرة من Telethon أو Pyrogram
+      - key: PRIVATE_GROUP_BOT_API_ID
+        value: "-1001234567890"
+      - key: GROUPLOG
+        value: "true"
