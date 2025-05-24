@@ -1,5 +1,5 @@
 databases:
-  - name: Best-Render
+  - name: Best-Rendera
     ipAllowList: []
     region: frankfurt
     plan: free
