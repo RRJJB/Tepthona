@@ -5,7 +5,7 @@ import os
 import sys
 import time
 from .core.helper import time_formatter#, bash
-from .load_plug import load
+from Tepthon.load_plug import load
 from telethon.errors import SessionRevokedError
 from .utils import (
     join_dev,
