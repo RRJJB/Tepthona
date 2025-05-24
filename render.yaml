@@ -1,17 +1,36 @@
+databases:
+  - name: Best-Render
+    ipAllowList: []
+    region: frankfurt
+    plan: free
 services:
-  - type: worker
-    name: tephtona-bot
-    runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python -m Tepthon"
+  - type: web
+    plan: free
+    name: Best-Rendera
+    env: python
+    repo: https://github.com/RRJJB/Tepthona
+    buildCommand: pip install -U -r requirements.txt
+    startCommand: python3 server.py & python3 -m Tepthon
+    region: frankfurt
     envVars:
-      - key: API_ID
-        value: "123456"  # استبدله بـ API ID الحقيقي
-      - key: API_HASH
-        value: "abcd1234efgh5678ijkl9012mnop3456"
+      - key: ALIVE_NAME
+        sync: false
+      - key: API_HASH 
+        sync: false
+      - key: API_ID 
+        sync: false
+      - key: ENV
+        value: ANYTHING
       - key: STRING_SESSION
-        value: "1A...xyz"  # الجلسة المشفرة من Telethon أو Pyrogram
-      - key: PRIVATE_GROUP_BOT_API_ID
-        value: "-1001234567890"
-      - key: GROUPLOG
-        value: "true"
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: TZ
+        value: Asia/Amman
+      - key: PYTHON_VERSION
+        value: 3.10.9
+      - key: DATABASE_URL
+        fromDatabase:
+          name: Best-Rendera
+          property: connectionString  
+  
