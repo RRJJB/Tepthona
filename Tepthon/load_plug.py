@@ -4,7 +4,7 @@ import os
 
 from pathlib import Path
 
-def load_plugins():
+def load():
     plugins_dir = Path(__file__).parent / "plugins"
     for file in os.listdir(plugins_dir):
         if file.endswith(".py") and not file.startswith("__"):
