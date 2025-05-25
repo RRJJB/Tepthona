@@ -35,7 +35,7 @@ async def load_plugins():
     load(["plugins/basic", "plugins/assistant", "plugins/account", "plugins/fun", "plugins/group"])
 
 
-jmubot.run_in_loop(load_plugins)
+jmubot.loop.run_until_complete(load_plugins())
 
 LOGS.info(f"⏳ تم استغراق {time_formatter((time.time() - start_time) * 1000)} ميللي ثانية لبدء تشغيل سورس تيبثون.")
 
