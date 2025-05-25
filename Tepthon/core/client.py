@@ -46,7 +46,7 @@ class TepthonClient(TelegramClient):
         kwargs["base_logger"] = TelethonLogger
 
         super().__init__(
-            StringSession(session),
+            session,
             api_id=api_id,
             api_hash=api_hash,
             connection_retries=10,
@@ -72,7 +72,9 @@ class TepthonClient(TelegramClient):
             self.logger.critical("❃ سيشن الحساب/توكن الحساب منتهي الصلاحية.")
         except (AccessTokenExpiredError, AccessTokenInvalidError):
             jmdB.del_key("BOT_TOKEN")
-            self.logger.critical("❃ توكن البوت منتهي أو غير صالح، اصنع بوت جديد من @Botfather وأضفه مع المتغير BOT_TOKEN")
+            self.logger.critical(
+                "❃ توكن البوت منتهي أو غير صالح، اصنع بوت جديد من @Botfather وأضفه مع المتغير BOT_TOKEN"
+            )
             sys.exit()
         self.me = await self.get_me()
         if self.me.bot:
