@@ -10,7 +10,9 @@ try:
 except ImportError:
     from ytdl import YoutubeDL
 
-from Tepthon import LOGS, jmdB 
+from Tepthon.core.logger import LOGS
+from Tepthon import jmubot
+
 from Tepthon.core.helper import humanbytes
 from .functions import set_attributes, download_file, run_async
 
