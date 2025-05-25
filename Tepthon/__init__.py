@@ -1,29 +1,14 @@
-import logging
-import time
-import sys
-import Tepthon.core.ubclient
-from .config import Var
-from .core.client import TepthonClient
-from .core.session import both_session
-from .core.logger import *
-from database import jmdB, JmdB
+from Tepthon.core.client import TepthonClient
+from Tepthon.config import Var
 
-version = "1.0.0"
-start_time = time.time()
-bot_token = JmdB.get_config("BOT_TOKEN")
-
-
+# تشغيل الحساب الأساسي
 jmubot = jmthon_bot = TepthonClient(
-        session=both_session(Var.SESSION, LOGS),
-        app_version=version,
-        device_model="Tepthon",
-       )
+    session=StringSession(Var.SESSION),
+    api_id=Var.API_ID,
+    api_hash=Var.API_HASH
+)
+jmubot.run_in_loop(jmubot.start_client())
 
-
-tgbot = asst = TepthonClient("Tgbot", bot_token=bot_token)
-
-del bot_token
-
-
-HNDLR = jmdB.get_key("HNDLR") or "."
-SUDO_HNDLR = jmdB.get_key("SUDO_HNDLR") or HNDLR
+# تشغيل البوت المساعد (Tgbot)
+tgbot = asst = TepthonClient("Tgbot")
+tgbot.run_in_loop(tgbot.start_client(bot_token=Var.BOT_TOKEN))
