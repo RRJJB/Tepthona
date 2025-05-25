@@ -1,7 +1,8 @@
 from Tepthon.core.client import TepthonClient
 from Tepthon.config import Var
+from telethon.sessions import StringSession
 
-# تشغيل الحساب الأساسي
+# الحساب الأساسي
 jmubot = jmthon_bot = TepthonClient(
     session=StringSession(Var.SESSION),
     api_id=Var.API_ID,
@@ -9,6 +10,6 @@ jmubot = jmthon_bot = TepthonClient(
 )
 jmubot.run_in_loop(jmubot.start_client())
 
-# تشغيل البوت المساعد (Tgbot)
+# البوت المساعد
 tgbot = asst = TepthonClient("Tgbot")
 tgbot.run_in_loop(tgbot.start_client(bot_token=Var.BOT_TOKEN))
