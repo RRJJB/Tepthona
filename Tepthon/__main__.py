@@ -30,9 +30,11 @@ except Exception as meo:
 
 jmubot.loop.create_task(join_dev())
 
+# تعريف دالة التحميل كـ async
 async def load_plugins():
     load(["plugins/basic", "plugins/assistant", "plugins/account", "plugins/fun", "plugins/group"])
 
+# تمرير الدالة بدون تنفيذها
 jmubot.run_in_loop(load_plugins)
 
 LOGS.info(f"⏳ تم استغراق {time_formatter((time.time() - start_time) * 1000)} ميللي ثانية لبدء تشغيل سورس تيبثون.")
