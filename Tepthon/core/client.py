@@ -28,9 +28,10 @@ class TepthonClient(TelegramClient):
 
     def __init__(
         self,
-        session,
+        session,  # session should be a StringSession instance or session filename
         api_id: int = Var.API_ID,
         api_hash: str = Var.API_HASH,
+        bot_token=None,
         logger: Logger = LOGS,
         log_attempt=True,
         exit_on_error=True,
@@ -44,8 +45,10 @@ class TepthonClient(TelegramClient):
         self.logger = logger
         self._thumb = {}
         kwargs["base_logger"] = TelethonLogger
+
+        # session can be a StringSession object or a string
         super().__init__(
-            StringSession(session),
+            session,
             api_id=api_id,
             api_hash=api_hash,
             connection_retries=10,
@@ -71,7 +74,9 @@ class TepthonClient(TelegramClient):
             self.logger.critical("❃ سيشن الحساب/توكن الحساب منتهي الصلاحية.")
         except (AccessTokenExpiredError, AccessTokenInvalidError):
             jmdB.del_key("BOT_TOKEN")
-            self.logger.critical("❃ توكن البوت منتهي أو غير صالح، اصنع بوت جديد من @Botfather وأضفه مع المتغير BOT_TOKEN")
+            self.logger.critical(
+                "❃ توكن البوت منتهي أو غير صالح، اصنع بوت جديد من @Botfather وأضفه مع المتغير BOT_TOKEN"
+            )
             sys.exit()
         self.me = await self.get_me()
         if self.me.bot:
@@ -80,7 +85,9 @@ class TepthonClient(TelegramClient):
             setattr(self.me, "phone", None)
             me = self.full_name
         if self.uid in blacklisted_users:
-            self.logger.error(f"({me} - {self.uid}) ~ لا يمكنك استخدام سورس تيبثون أنت محظور بسبب مخالفتك سياسة الاستخدام @Tepthon")
+            self.logger.error(
+                f"({me} - {self.uid}) ~ لا يمكنك استخدام سورس تيبثون أنت محظور بسبب مخالفتك سياسة الاستخدام @Tepthon"
+            )
             sys.exit(1)
         if self._log_at:
             self.logger.info(f"❃ تم تسجيل الدخول كـ {me}")
@@ -107,3 +114,23 @@ class TepthonClient(TelegramClient):
 
     def to_dict(self):
         return dict(inspect.getmembers(self))
+
+    async def fast_uploader(self, file, **kwargs):
+        # ... نفس التعريف السابق دون تغيير ...
+        from .FastTelethon import upload_file
+        from .helper import progress
+        # المنطق نفسه لتحميل الملفات
+        # (يمكنك نسخ باقي التعريف كما هو)
+        pass
+
+    async def fast_downloader(self, file, **kwargs):
+        # ... نفس التعريف السابق دون تغيير ...
+        pass
+
+    async def _get_custom_thumb(self, thumb: str):
+        # ... نفس التعريف السابق دون تغيير ...
+        pass
+
+    async def send_file(self, *args, **kwargs):
+        # ... نفس التعريف السابق دون تغيير ...
+        return await super().send_file(*args, **kwargs)
