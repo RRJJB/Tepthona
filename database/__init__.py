@@ -1,7 +1,7 @@
 from .core.getdb import pyDatabase
 
 #to import database 
-jmdB = JmdB = pyDatabase()
+jmdB = jmdB = pyDatabase()
 
 
 #for old 
