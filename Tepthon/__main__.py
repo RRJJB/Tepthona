@@ -1,3 +1,4 @@
+from Tepthon.core.logger import LOGS
 from . import *
 import sys
 import time
