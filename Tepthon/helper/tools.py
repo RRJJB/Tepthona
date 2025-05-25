@@ -2,7 +2,8 @@ import math
 from PIL import Image
 from contextlib import suppress
 from . import run_async
-from .. import LOGS, jmubot
+from Tepthon.core.logger import LOGS
+from Tepthon import jmubot
 
 from telegraph import Telegraph
 from database import jmdB
