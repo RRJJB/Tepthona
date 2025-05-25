@@ -23,7 +23,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_peer_id
 from Tepthon.helper import inline_mention#, check_update
-from Tepthon import LOGS
+from Tepthon.core.logger import LOGS
 
 async def inline_on():
     from .. import tgbot, JmdB, jmubot
