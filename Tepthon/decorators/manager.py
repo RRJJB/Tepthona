@@ -2,7 +2,7 @@ from asyncio import sleep
 from telethon.errors import MessageDeleteForbiddenError, MessageNotModifiedError
 from telethon.tl.custom import Message
 from telethon.tl.types import MessageService
-from Tepthon import LOGS
+from Tepthon.core.logger import LOGS
 
 
 async def eor(event: Message, text=None, time=None, link_preview=False, edit_time=None, **args):
